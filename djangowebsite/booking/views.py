@@ -7,4 +7,4 @@ def index(request):
     return render(request,"booking/index.html")
 
 def booking_slot(request):
-    return "book a slot"
+    return HttpResponse("Booking is done here")
