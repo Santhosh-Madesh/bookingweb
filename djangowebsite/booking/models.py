@@ -1,16 +1,18 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
-class User(models.Model):
-    name = models.CharField(max_length=50)
-    email = models.CharField(max_length=50)
-    number = models.BigIntegerField()
+class AvSlots(models.Model):
+    available_slots = models.IntegerField(validators=[MaxValueValidator(24),MinValueValidator(0)])
+    date = models.DateField()
 
     def __str__(self):
-        return self.name
+        slots_remaining = str(self.available_slots)
+        return slots_remaining
+
 
 class Book(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateTimeField()
+    avslots = models.ForeignKey(AvSlots, on_delete=models.CASCADE)
+    date = models.DateField()
     slot_num = models.IntegerField()
 
     def __str__(self):

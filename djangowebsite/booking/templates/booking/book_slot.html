@@ -6,6 +6,33 @@
     <title>Book Slot</title>
 </head>
 <body>
-    
+    {% csrf_token %}
+    <form action="{% url 'booking:DetailView' 2 %}" method="post">
+        <fieldset>
+            <legend>
+                <h1>Book your slot</h1>
+            </legend>
+            <label for="username">
+                Name: <input type="name" name="username" required><br>
+            </label>
+            <label for="slot">
+                Slot 1 <input type="radio" name="slot" value="1"><br>
+            </label>
+            <label for="slot">
+                Slot 2 <input type="radio" name="slot" value="2"><br>
+            </label>
+            <label for="slot">
+                Slot 3 <input type="radio" name="slot" value="3"><br>
+            </label>
+            <label for="slot">
+                Slot 4 <input type="radio" name="slot" value="4"><br>
+            </label>
+            <label for="slot">
+                Slot 5 <input type="radio" name="slot" value="5"><br>
+            </label>
+            <input type="submit" value="Book">
+        </fieldset>
+        
+    </form>
 </body>
 </html>
